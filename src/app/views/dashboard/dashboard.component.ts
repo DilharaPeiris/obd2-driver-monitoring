@@ -2,15 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { DashboardService } from '../../shared/services/dashboard.services';
+import { DataVM } from '../../shared/models/data.vm';
+
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { Time } from '@angular/common';
 
 @Component({
   templateUrl: 'dashboard.component.html'
+
 })
 export class DashboardComponent implements OnInit {
 
+  constructor(public DashboardService: DashboardService ){}
+
   radioModel: string = 'Month';
+  public dataVM: DataVM={};
+
+  public location:string;
+  public createdDate: Date;
+  public createdTime: Time;
+  public avgGoogleAPISpeed: number;
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -381,13 +394,42 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // this.DashboardService.getRecord()
+    // .subscribe(data => {
+    //   console.log("data");
+    //   console.log(data);
+    //   this.dataVM.location=data[0].location;
+      
+    // }, error => {
+    //   console.log(error);
+      
+    // });
+    //this.getRecord();
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+    this.getRecord();
   }
+
+
+  getRecord(){
+    this.DashboardService.getRecord().subscribe(
+      data => {
+        console.log(data);    
+       
+      } , 
+      error => {
+          console.log(error);}
+    );
+  }
+   
+    
+  
+
 
   reset(){
     
