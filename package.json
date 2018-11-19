@@ -47,6 +47,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.22.2",
     "mutationobserver-shim": "^0.3.2",
+    "ng-pick-datetime": "^5.2.6",
     "ng2-charts": "^1.6.0",
     "ngx-bootstrap": "^3.0.1",
     "ngx-perfect-scrollbar": "^6.3.0",

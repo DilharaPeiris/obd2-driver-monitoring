@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 @Component({
   templateUrl: 'dashboard.component.html'
 })
@@ -386,4 +388,9 @@ export class DashboardComponent implements OnInit {
       this.mainChartData3.push(65);
     }
   }
+
+  reset(){
+    
+  }
+
 }
