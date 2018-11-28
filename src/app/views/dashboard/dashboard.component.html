@@ -126,6 +126,13 @@
   
   </div>
  </div>
+ <div class="card">
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-marker [latitude]="Startlat" [longitude]="startlng"></agm-marker>
+    <agm-marker [latitude]="endlat" [longitude]="endlng"></agm-marker>
+  </agm-map>
+ </div>
 
 
 <div class="card">

@@ -6,6 +6,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -13,7 +14,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     DashboardRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'paste_ur_map_api_key_here'
+    })
   ],
   declarations: [ DashboardComponent ]
 })

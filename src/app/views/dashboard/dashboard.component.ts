@@ -10,10 +10,11 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { Time } from '@angular/common';
 
 @Component({
-  templateUrl: 'dashboard.component.html'
-
+  templateUrl: 'dashboard.component.html',
+  styleUrls : ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  zoom: number;
 
   constructor(public DashboardService: DashboardService ){}
 
@@ -24,6 +25,29 @@ export class DashboardComponent implements OnInit {
   public createdDate: Date;
   public createdTime: Time;
   public avgGoogleAPISpeed: number;
+
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+
+  Startlat: number = 6.927079;
+  startlng: number = 79.861244;
+
+  endlat: number = 5.94851;
+  endlng: number = 80.53528;
+
+
+  private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((data) => {
+       
+        
+        this.lat = data.coords.latitude;
+        this.lng = data.coords.longitude;
+        this.zoom = 12;
+
+      });
+    }
+  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -394,6 +418,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setCurrentPosition();
 
     // this.DashboardService.getRecord()
     // .subscribe(data => {
